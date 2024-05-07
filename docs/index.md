@@ -1,7 +1,7 @@
 # orchestration framework
 
 
-## Service user
+## Component
 
 ```yaml title="config.yaml"
 name: inventory-management
@@ -66,7 +66,7 @@ if service is 'ui'
 add {service.repo} to the common frontend build
 
 if the service is 'api'
-build the {service.repo}/Dockerfile with env:
+build and deploy the {service.repo}/Dockerfile with env:
   PORT: 8080
   SERVICE_BASE_URL: {name}/{service.name}
   this is for the frontend to have a common url for api access
@@ -78,7 +78,7 @@ build the {service.repo}/Dockerfile with env:
     docs: /stock/provider/docs
 
 if the service is 'agent'
-build the {service.repo}/Dockerfile
+build and deploy the {service.repo}/Dockerfile
 schedule the deployment to run on {service.tagname} node
 *this means it now has access to service apis through k8s*
 *and host machine capabilities*
